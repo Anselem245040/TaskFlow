@@ -1,5 +1,6 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
 import * as dotenv from 'dotenv';
+import * as path from 'path';
 
 
 dotenv.config()
@@ -13,9 +14,11 @@ export const dataSourceOptions: DataSourceOptions = {
   database: process.env.DB_NAME || 'taskflow_db',
   ssl:
     process.env.DATABASE_SSL === 'true' ? { rejectUnauthorized: false } : false,
-  entities: ['src/**/*.entity.ts'],
-  migrations: ['src/core/database/migrations/*.ts'],
+  entities: [path.join(process.cwd(), 'src/**/*.entity.{ts,js}')],
+  migrations: [path.join(process.cwd(), 'src/core/database/migrations/*.{ts,js}')],
   synchronize: false,
+  migrationsRun: false,
+  migrationsTableName: 'migrations',
 };
 
 
