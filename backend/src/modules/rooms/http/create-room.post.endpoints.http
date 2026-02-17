@@ -1,0 +1,46 @@
+POST http://localhost:3001/rooms
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmYTgyNjdhMy03MDdlLTQwY2UtYTkzMi00MzdmN2NhZTJkMTEiLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3NzEyNjM1NDYsImV4cCI6MTc3MTQzNjM0NiwiYXVkIjoidGFza2Zsb3dfdXNlcnMiLCJpc3MiOiJ0YXNrZmxvd19iYWNrZW5kIn0.jaoFMBjyBltxtbcgJOTqKMA9ahWFcVTqLj74Jwro3i4
+
+{
+  "name": "Room 1"
+  
+  
+}
+
+GET http://localhost:3001/rooms/55d842be-189f-4936-8d34-e136665e8961
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmYTgyNjdhMy03MDdlLTQwY2UtYTkzMi00MzdmN2NhZTJkMTEiLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3NzEyNjM1NDYsImV4cCI6MTc3MTQzNjM0NiwiYXVkIjoidGFza2Zsb3dfdXNlcnMiLCJpc3MiOiJ0YXNrZmxvd19iYWNrZW5kIn0.jaoFMBjyBltxtbcgJOTqKMA9ahWFcVTqLj74Jwro3i4
+
+
+
+
+POST http://localhost:3001/rooms/55d842be-189f-4936-8d34-e136665e8961/invite
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmYTgyNjdhMy03MDdlLTQwY2UtYTkzMi00MzdmN2NhZTJkMTEiLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3NzEyNjM1NDYsImV4cCI6MTc3MTQzNjM0NiwiYXVkIjoidGFza2Zsb3dfdXNlcnMiLCJpc3MiOiJ0YXNrZmxvd19iYWNrZW5kIn0.jaoFMBjyBltxtbcgJOTqKMA9ahWFcVTqLj74Jwro3i4
+
+{
+  "email": "han.d@example.com"
+}
+
+
+POST http://localhost:3001/rooms/55d842be-189f-4936-8d34-e136665e8961/accept-invite
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmOTg1NjdmYy04Y2Q0LTRkNmItOWI1My04MjEzNzA4Mzc0NWYiLCJlbWFpbCI6Imhhbi5kQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMzYxMzEzLCJleHAiOjE3NzE1MzQxMTMsImF1ZCI6InRhc2tmbG93X3VzZXJzIiwiaXNzIjoidGFza2Zsb3dfYmFja2VuZCJ9.TvTVr-C4OQURAcRyBFeVus_yoteKN-UtBKW8ARuHpAk
+
+{
+    "inviteCode": "cDXf-MwV"
+}
+
+PATCH http://localhost:3001/rooms/55d842be-189f-4936-8d34-e136665e8961/transfer-ownership
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmYTgyNjdhMy03MDdlLTQwY2UtYTkzMi00MzdmN2NhZTJkMTEiLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3NzEzNjI3ODAsImV4cCI6MTc3MTUzNTU4MCwiYXVkIjoidGFza2Zsb3dfdXNlcnMiLCJpc3MiOiJ0YXNrZmxvd19iYWNrZW5kIn0.0L2SZ8qrnVW4ND56_Dnh_MYUJyjwRTq1KSTmXDIPW0o
+
+{
+    "newOwnerId": "f98567fc-8cd4-4d6b-9b53-82137083745f"
+}
