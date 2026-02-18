@@ -6,10 +6,10 @@ import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany } from 'typeorm
 @Entity()
 export class Room extends BaseEntity {
   @Column({ type: 'varchar', length: 255, nullable: false })
-  name: string;
+  name!: string;
 
   @Column({ type: 'varchar', length: 255, nullable: false, unique: true })
-  inviteCode: string;
+  inviteCode!: string;
 
   @ManyToOne(() => User, (user) => user.ownedRooms, { onDelete: 'CASCADE' })
   owner: User;
