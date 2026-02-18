@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-Taskflow is a 
-=======
 # TaskFlow
 a platform that allows teams Work better together. Organize, assign and track everything in one place.
 
@@ -12,4 +9,3 @@ a platform that allows teams Work better together. Organize, assign and track ev
 -zod
 
 ##backend
->>>>>>> 7bef3761bb6ba1f20a98cdc5843dd894c6265085
