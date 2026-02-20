@@ -1,7 +1,9 @@
 import { Exclude } from 'class-transformer';
 import { UserStatus } from 'src/common/enums/status.enum';
 import { BaseEntity } from 'src/core/database/entities/base.entity';
-import { Entity, Column, Index } from 'typeorm';
+import { TaskRoomMember } from 'src/modules/membership/entities/taskroommember.entity';
+import { Room } from 'src/modules/rooms/entities/room.entity';
+import { Entity, Column, Index, OneToMany } from 'typeorm';
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -29,4 +31,12 @@ export class User extends BaseEntity {
     name: 'last_login_at',
   })
   lastLoginAt?: Date;
+
+  // Rooms this user owns
+  @OneToMany(() => Room, (room) => room.owner)
+  ownedRooms: Room[];
+
+  // Memberships across rooms
+  @OneToMany(() => TaskRoomMember, (m) => m.user)
+  roomMemberships: TaskRoomMember[];
 }
