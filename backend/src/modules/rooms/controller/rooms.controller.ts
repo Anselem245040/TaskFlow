@@ -17,8 +17,7 @@ import { CreateRoomDto } from '../dtos/create-room.dto';
 import { ActiveUser } from 'src/modules/auth/decorators/active-user.decorator';
 import { RoomAccessGuard } from '../guards/room-access.guard';
 import { RoomAccess } from '../decorators/room-access.decorator';
-import { use } from 'react';
-import { IsCurrency } from 'class-validator';
+
 
 @Controller('rooms')
 @ApiTags('Rooms')

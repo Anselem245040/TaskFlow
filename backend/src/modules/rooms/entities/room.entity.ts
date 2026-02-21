@@ -1,5 +1,6 @@
 import { BaseEntity } from 'src/core/database/entities/base.entity';
 import { TaskRoomMember } from 'src/modules/membership/entities/taskroommember.entity';
+import { TaskEntity } from 'src/modules/tasks/entities/task.entity';
 import { User } from 'src/modules/users/entities/user.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 
@@ -20,5 +21,8 @@ export class Room extends BaseEntity {
 
   @OneToMany(() => TaskRoomMember, (m) => m.room)
   members: TaskRoomMember[];
+
+  @OneToMany(() => TaskEntity, (task) => task.room)
+  tasks: TaskEntity[];
 
 }

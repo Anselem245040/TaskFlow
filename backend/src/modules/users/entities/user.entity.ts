@@ -3,6 +3,7 @@ import { UserStatus } from 'src/common/enums/status.enum';
 import { BaseEntity } from 'src/core/database/entities/base.entity';
 import { TaskRoomMember } from 'src/modules/membership/entities/taskroommember.entity';
 import { Room } from 'src/modules/rooms/entities/room.entity';
+import { TaskEntity } from 'src/modules/tasks/entities/task.entity';
 import { Entity, Column, Index, OneToMany } from 'typeorm';
 
 @Entity('users')
@@ -39,4 +40,10 @@ export class User extends BaseEntity {
   // Memberships across rooms
   @OneToMany(() => TaskRoomMember, (m) => m.user)
   roomMemberships: TaskRoomMember[];
+
+ @OneToMany(() => TaskEntity, (task) => task.createdBy)
+createdTasks: TaskEntity[];
+
+@OneToMany(() => TaskEntity, (task) => task.assignedTo)
+assignedTasks: TaskEntity[];
 }

@@ -108,7 +108,7 @@ export class RoomsService {
     // Logic for fetching room details, including participants
     const room = await this.roomRepository.findOne({
       where: { id: roomId },
-      relations: ['members'], // assuming TaskRoomMember has a user relation
+      relations: ['members', 'tasks'], // assuming TaskRoomMember has a user relation
     });
     if (!room) {
       throw new NotFoundException('Room not found');
