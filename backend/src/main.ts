@@ -12,8 +12,8 @@ async function bootstrap() {
       whitelist: true,
       forbidNonWhitelisted: true,
       transform: true,
-    })
-  )
+    }),
+  );
 
   // Swagger setup
   const config = new DocumentBuilder()
@@ -24,9 +24,14 @@ async function bootstrap() {
     .addServer('http://localhost:3001', 'Local server')
     .build();
 
-    const document = SwaggerModule.createDocument(app, config);
+  const document = SwaggerModule.createDocument(app, config);
 
-    SwaggerModule.setup('api-docs', app, document);
+  SwaggerModule.setup('api-docs', app, document);
+  app.enableCors({
+    origin: 'https://localhost:3001',
+
+    credentials: true,
+  });
   await app.listen(process.env.PORT ?? 3001);
 }
 bootstrap();
