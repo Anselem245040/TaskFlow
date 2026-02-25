@@ -31,9 +31,13 @@ yarn-error.log*
 .pnpm-debug.log*
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # env files (can opt-in for committing if needed)
 .env*
 **/.env*
+=======
+
+>>>>>>> 0d73c2d509346ef790157578119a01b5d4bfe397
 =======
 
 >>>>>>> 0d73c2d509346ef790157578119a01b5d4bfe397
@@ -45,7 +49,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 <<<<<<< HEAD
+<<<<<<< HEAD
 **/next-env.d.ts
+=======
+
+# clerk configuration (can include secrets)
+>>>>>>> 0d73c2d509346ef790157578119a01b5d4bfe397
 =======
 
 # clerk configuration (can include secrets)
