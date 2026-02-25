@@ -1,9 +1,14 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+<<<<<<< HEAD
 node_modules/
 **/node_modules/
 .pnp
+=======
+/node_modules
+/.pnp
+>>>>>>> 0d73c2d509346ef790157578119a01b5d4bfe397
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -13,17 +18,26 @@ node_modules/
 
 # testing
 /coverage
+<<<<<<< HEAD
 **/coverage/
 
 # next.js
 .next/
 **/ .next/
+=======
+
+# next.js
+/.next/
+>>>>>>> 0d73c2d509346ef790157578119a01b5d4bfe397
 /out/
 
 # production
 /build
+<<<<<<< HEAD
 **/build/
 **/dist/
+=======
+>>>>>>> 0d73c2d509346ef790157578119a01b5d4bfe397
 
 # misc
 .DS_Store
@@ -35,9 +49,13 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+<<<<<<< HEAD
 # env files (can opt-in for committing if needed)
 .env*
 **/.env*
+=======
+
+>>>>>>> 0d73c2d509346ef790157578119a01b5d4bfe397
 
 # vercel
 .vercel
@@ -45,4 +63,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+<<<<<<< HEAD
 **/next-env.d.ts
+=======
+
+# clerk configuration (can include secrets)
+>>>>>>> 0d73c2d509346ef790157578119a01b5d4bfe397
