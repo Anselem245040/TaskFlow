@@ -1,14 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-<<<<<<< HEAD
 /node_modules
 /.pnp
-=======
-node_modules/
-**/node_modules/
-.pnp
->>>>>>> b3cf05a (revert restructure and cleanup git)
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -18,26 +12,13 @@ node_modules/
 
 # testing
 /coverage
-<<<<<<< HEAD
 
 # next.js
 /.next/
-=======
-**/coverage/
-
-# next.js
-.next/
-**/ .next/
->>>>>>> b3cf05a (revert restructure and cleanup git)
 /out/
 
 # production
 /build
-<<<<<<< HEAD
-=======
-**/build/
-**/dist/
->>>>>>> b3cf05a (revert restructure and cleanup git)
 
 # misc
 .DS_Store
@@ -49,12 +30,13 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+<<<<<<< HEAD
 # env files (can opt-in for committing if needed)
 .env*
-<<<<<<< HEAD
-=======
 **/.env*
->>>>>>> b3cf05a (revert restructure and cleanup git)
+=======
+
+>>>>>>> 0d73c2d509346ef790157578119a01b5d4bfe397
 
 # vercel
 .vercel
@@ -63,8 +45,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 <<<<<<< HEAD
+**/next-env.d.ts
+=======
 
 # clerk configuration (can include secrets)
-=======
-**/next-env.d.ts
->>>>>>> b3cf05a (revert restructure and cleanup git)
+>>>>>>> 0d73c2d509346ef790157578119a01b5d4bfe397

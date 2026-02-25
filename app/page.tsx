@@ -36,7 +36,7 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
-            <Link href="/sign-up">
+            <Link href="/auth/signup">
               <Button size="lg" className="h-12 px-8 text-base bg-white text-black hover:bg-zinc-200 rounded-full transition-all hover:scale-105">
                 Get Started Free
                 <ArrowRight className="ml-2 h-4 w-4" />

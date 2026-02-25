@@ -47,10 +47,10 @@ export function Navbar() {
                         ))}
                     </div>
                     <div className="flex items-center gap-4 pl-6 border-l border-white/10">
-                        <Link href="/sign-in" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
+                        <Link href="/auth/login" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
                             Sign In
                         </Link>
-                        <Link href="/sign-up">
+                        <Link href="/auth/signup">
                             <Button size="sm" className="bg-white text-black hover:bg-zinc-200">
                                 Get Started
                             </Button>
@@ -81,10 +81,10 @@ export function Navbar() {
                         </Link>
                     ))}
                     <div className="h-px bg-white/10 my-2" />
-                    <Link href="/sign-in" onClick={() => setIsOpen(false)} className="text-base font-medium text-zinc-400 hover:text-white py-2">
+                    <Link href="/auth/login" onClick={() => setIsOpen(false)} className="text-base font-medium text-zinc-400 hover:text-white py-2">
                         Sign In
                     </Link>
-                    <Link href="/sign-up" onClick={() => setIsOpen(false)}>
+                    <Link href="/auth/signup" onClick={() => setIsOpen(false)}>
                         <Button className="w-full bg-white text-black hover:bg-zinc-200">
                             Get Started
                         </Button>
