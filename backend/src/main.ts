@@ -34,7 +34,14 @@ async function bootstrap() {
     credentials: true,
   });
   const configService = app.get(ConfigService);
-  await app.listen(configService.get<number>('port', 3000));
-  console.log(configService.get<string>('NODE_ENV'));
+
+  const port =
+    process.env.PORT || configService.get<number>('APP_PORT') || 3000;
+
+  await app.listen(port);
+
+  console.log(`Server running on port ${port}`);
+  console.log(`Environment: ${configService.get<string>('NODE_ENV')}`);
 }
-bootstrap();
+// explicitly ignore the returned promise to satisfy the linter/ts‑check
+void bootstrap();
