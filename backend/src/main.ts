@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -28,10 +29,19 @@ async function bootstrap() {
 
   SwaggerModule.setup('api-docs', app, document);
   app.enableCors({
-    origin: 'https://localhost:3001',
+    origin: true,
 
     credentials: true,
   });
-  await app.listen(process.env.PORT ?? 3001);
+  const configService = app.get(ConfigService);
+
+  const port =
+    process.env.PORT || configService.get<number>('APP_PORT') || 3000;
+
+  await app.listen(port);
+
+  console.log(`Server running on port ${port}`);
+  console.log(`Environment: ${configService.get<string>('NODE_ENV')}`);
 }
-bootstrap();
+// explicitly ignore the returned promise to satisfy the linter/ts‑check
+void bootstrap();

@@ -9,3 +9,5 @@ a platform that allows teams Work better together. Organize, assign and track ev
 -zod
 
 ##backend
+nestjs
+
