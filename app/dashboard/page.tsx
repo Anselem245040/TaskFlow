@@ -45,12 +45,12 @@ interface Room {
 
 export default function DashboardPage() {
     const [rooms, setRooms] = useState<Room[]>([]);
-    const [isLoading, setIsLoading] = useState(false);
     const [user, setUser] = useState<any>(null);
     const router = useRouter();
+    const {logout, isLoading} = useAuth();
 
     const handleLogout = () => {
-        // UI Action: Add your logout logic here
+       
     };
 
     return (
@@ -215,4 +215,5 @@ function RoomCard({ room }: { room: Room }) {
     );
 }
 
-import Link from "next/link";
+import Link from "next/link";import { useAuth } from "../context/AuthContext";
+

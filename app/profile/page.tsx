@@ -21,22 +21,22 @@ import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
 import Link from "next/link";
+import { useAuth } from "../context/AuthContext";
 
 export default function ProfilePage() {
-    const [user, setUser] = useState<any>(null);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [isSaving, setIsSaving] = useState(false);
     const [isDeactivating, setIsDeactivating] = useState(false);
+    const {user, isLoading} = useAuth();
     const router = useRouter();
 
     const handleUpdateProfile = (e: React.FormEvent) => {
         e.preventDefault();
-        // UI Action: Add your profile update logic here
     };
 
     const handleDeactivate = () => {
-        // UI Action: Add your deactivation logic here
+        
     };
 
     return (
