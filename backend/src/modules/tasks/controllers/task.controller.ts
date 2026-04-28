@@ -101,11 +101,7 @@ export class TaskController {
     description: 'Updates an already created task',
   })
   @ApiBody({
-    schema: {
-      example: {
-        type: UpdateTaskDto,
-      },
-    },
+    type: UpdateTaskDto,
   })
   @ApiResponse({
     status: 200,
@@ -153,6 +149,6 @@ export class TaskController {
     @Param('roomId') roomId: string,
     @Param('taskId') taskId: string,
   ) {
-    return await this.tasksService.deleteATask(roomId, taskId)
+    return await this.tasksService.deleteATask(roomId, taskId);
   }
 }

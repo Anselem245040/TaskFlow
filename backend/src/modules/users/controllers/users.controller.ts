@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
+  ApiBody,
   ApiOperation,
   ApiResponse,
   ApiTags,
@@ -58,6 +59,15 @@ export class UsersController {
   @ApiResponse({
     status: 201,
     description: 'The user has been successfully created.',
+  })
+  @ApiBody({
+    schema: {
+      example: {
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        password: 'strongpassword123',
+      },
+    },
   })
   @Post()
   public createUser(@Body() createUserDto: usersService.CreateUserDto) {
