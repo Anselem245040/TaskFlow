@@ -11,4 +11,15 @@ export class CreateRoomDto {
     @IsNotEmpty({ message: 'Name cannot be empty' })
     @MaxLength(100, { message: 'Name cannot exceed 100 characters' })
     name?: string;
+
+    @ApiProperty({
+        description: 'Description of the room',
+        example: 'A room for Project Alpha discussions'
+    })
+    @IsOptional()
+    @IsString({ message: 'Description must be a string' })
+    @MaxLength(500, { message: 'Description cannot exceed 500 characters' })
+    description?: string;
+
+    
 }
