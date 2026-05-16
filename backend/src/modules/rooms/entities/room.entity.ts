@@ -9,6 +9,9 @@ export class Room extends BaseEntity {
   @Column({ type: 'varchar', length: 255, nullable: false })
   name!: string;
 
+  @Column({ type: 'text', nullable: true })
+  description?: string;
+
   @Column({ type: 'varchar', length: 255, nullable: false, unique: true })
   inviteCode!: string;
 

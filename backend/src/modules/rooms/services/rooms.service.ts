@@ -42,6 +42,7 @@ export class RoomsService {
 
       const room = roomRepo.create({
         name: createRoomDto.name,
+        description: createRoomDto.description,
         ownerId,
         inviteCode: invitecode(),
       });
