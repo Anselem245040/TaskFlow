@@ -15,7 +15,7 @@ export const dataSourceOptions: DataSourceOptions = {
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME || 'railway',
   ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
-  entities: [path.join(__dirname, '**/*.entity' + (isCompiled ? '.js' : '.ts'))],
+  entities: [path.join(__dirname, '../../**/*.entity' + (isCompiled ? '.js' : '.ts'))],
   migrations: [path.join(__dirname, 'migrations/*' + (isCompiled ? '.js' : '.ts'))],
   synchronize: false,
   migrationsRun: false,
