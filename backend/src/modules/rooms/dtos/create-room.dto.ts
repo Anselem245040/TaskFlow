@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNotEmpty, IsOptional, IsString, Max, MaxLength} from "class-validator";
+import { IsNotEmpty, IsOptional, IsString, MaxLength} from "class-validator";
 
 export class CreateRoomDto {
     @ApiProperty({
@@ -17,6 +17,7 @@ export class CreateRoomDto {
         example: 'A room for Project Alpha discussions'
     })
     @IsOptional()
+    @IsNotEmpty({ message: 'Description cannot be empty' })
     @IsString({ message: 'Description must be a string' })
     @MaxLength(500, { message: 'Description cannot exceed 500 characters' })
     description?: string;
