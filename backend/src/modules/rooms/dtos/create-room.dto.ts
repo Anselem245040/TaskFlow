@@ -16,11 +16,11 @@ export class CreateRoomDto {
         description: 'Description of the room',
         example: 'A room for Project Alpha discussions'
     })
-    @IsOptional()
+   
     @IsNotEmpty({ message: 'Description cannot be empty' })
     @IsString({ message: 'Description must be a string' })
     @MaxLength(500, { message: 'Description cannot exceed 500 characters' })
-    description?: string;
+    description!: string;
 
     
 }
