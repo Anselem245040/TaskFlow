@@ -262,4 +262,21 @@ async acceptRoomInvitation(
   ) {
     return this.roomsService.transferOwnership(roomId, user.id, newOwnerId);
   }
+
+  @Delete(':roomId')
+  @RoomAccess('owner') // ensures only owner can call it (via RoomAccessGuard)
+  @ApiOperation({
+    summary: 'Delete a room',
+    description: 'Allows the owner to delete the room and all its sub-rooms',
+  })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: 'Room deleted successfully',
+  })
+  async deleteRoom(
+    @Param('roomId') roomId: string,
+    @ActiveUser() user: { id: string },
+  ) {
+    return this.roomsService.deleteRoom(roomId);
+  }
 }
