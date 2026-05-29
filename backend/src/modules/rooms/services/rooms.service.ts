@@ -101,7 +101,7 @@ export class RoomsService {
         { ownerId: userId },
         { members: { userId } }, // this assumes TaskRoomMember has a userId column
       ],
-      relations: relations ?? {},
+      relations: {...relations ?? {}, owner: true}, // include owner details if needed
     });
   }
 
@@ -109,7 +109,28 @@ export class RoomsService {
     // Logic for fetching room details, including participants
     const room = await this.roomRepository.findOne({
       where: { id: roomId },
-      relations: ['members', 'tasks'], // assuming TaskRoomMember has a user relation
+      relations: ['members', 'tasks', 'owner', 'members.user'], // include owner details
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        inviteCode: true,
+        createdAt: true,
+        owner: {
+          name: true,
+          email: true,
+        },
+        members: {
+          id: true,
+          user: {
+            id: true,
+            name: true,
+            email: true,          
+          },
+          role: true,
+          status: true,
+        },
+      }, // assuming TaskRoomMember has a user relation
     });
     if (!room) {
       throw new NotFoundException('Room not found');
@@ -248,12 +269,18 @@ export class RoomsService {
     if (room.ownerId === requesterId) {
     return this.taskRoomMemberRepository.find({
       where: { taskRoomId: roomId },
-      relations: ['user'],
+      relations: ['user', 'invitedBy'], // Include user and inviter details
       select: {
         userId: true,
         role: true,
         status: true,
+        invitedBy: {
+          id: true,
+          name: true,
+          email: true,
+        },
         invitedByUserId: true,
+        
         acceptedAt: true,
         declinedAt: true,
         createdAt: true,
@@ -282,11 +309,16 @@ export class RoomsService {
     // Accepted members can see accepted participants only
     return this.taskRoomMemberRepository.find({
     where: { taskRoomId: roomId, status: RoomMemberStatus.ACCEPTED },
-    relations: ['user'], // Include user details here too?
+    relations: ['user', 'invitedBy'], // Include user and inviter details
     select: {
       userId: true,
       role: true,
       status: true,
+      invitedBy: {
+        id: true,
+        name: true,
+        email: true,
+      },
       invitedByUserId: true,
       acceptedAt: true,
       createdAt: true,
