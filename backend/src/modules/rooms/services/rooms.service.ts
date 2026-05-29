@@ -246,20 +246,26 @@ export class RoomsService {
 
     // Owner can see everybody
     if (room.ownerId === requesterId) {
-      return this.taskRoomMemberRepository.find({
-        where: { taskRoomId: roomId },
-        select: [
-          'userId',
-          'role',
-          'status',
-          'invitedByUserId',
-          'acceptedAt',
-          'declinedAt',
-        ],
-        order: { createdAt: 'ASC' }, // only if BaseEntity has createdAt
-      });
-    }
-
+    return this.taskRoomMemberRepository.find({
+      where: { taskRoomId: roomId },
+      relations: ['user'],
+      select: {
+        userId: true,
+        role: true,
+        status: true,
+        invitedByUserId: true,
+        acceptedAt: true,
+        declinedAt: true,
+        createdAt: true,
+        user: {
+          id: true,
+          name: true,
+          email: true,
+        },
+      },
+      order: { createdAt: 'ASC' },
+    });
+  }
     // If not owner, must be an ACCEPTED member to view participants
     const requesterMembership = await this.taskRoomMemberRepository.findOne({
       where: { taskRoomId: roomId, userId: requesterId },
@@ -275,10 +281,23 @@ export class RoomsService {
 
     // Accepted members can see accepted participants only
     return this.taskRoomMemberRepository.find({
-      where: { taskRoomId: roomId, status: RoomMemberStatus.ACCEPTED },
-      select: ['userId', 'role', 'status', 'invitedByUserId', 'acceptedAt'],
-      order: { createdAt: 'ASC' },
-    });
+    where: { taskRoomId: roomId, status: RoomMemberStatus.ACCEPTED },
+    relations: ['user'], // Include user details here too?
+    select: {
+      userId: true,
+      role: true,
+      status: true,
+      invitedByUserId: true,
+      acceptedAt: true,
+      createdAt: true,
+      user: {
+        id: true,
+        name: true,
+        email: true,
+      },
+    },
+    order: { createdAt: 'ASC' },
+  });
   }
 
   public async removeMember(roomId: string, ownerId: string, memberId: string) {
