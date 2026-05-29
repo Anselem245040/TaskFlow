@@ -141,7 +141,6 @@ export class RoomsController {
   })
   @HttpCode(HttpStatus.OK)
   @Post(':roomId/accept-invite')
-  @Post(':roomId/accept-invite')
 async acceptRoomInvitation(
   @ActiveUser() user: { id: string },
   @Param('roomId') roomId: string,
